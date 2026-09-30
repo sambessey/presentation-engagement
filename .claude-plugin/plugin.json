@@ -1,0 +1,8 @@
+{
+  "name": "presentation-engagement",
+  "owner": {"name": "Sam Bessey", "email": "sam@bessey.com"},
+  "version": "1.0.0",
+  "description": "Review any presentation and produce an annotated plan of audience interactions: polls, word clouds, quizzes, Q&A, predictions. Encodes timing rules, technique taxonomy, and failure modes.",
+  "skills": ["skills/presentation-engagement/SKILL.md"],
+  "license": "MIT"
+}

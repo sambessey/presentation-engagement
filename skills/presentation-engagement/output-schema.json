@@ -1,0 +1,49 @@
+{
+  "name": "presentation-engagement",
+  "description": "Machine-readable output contract for the presentation-engagement skill (v1.0.0). Interactions proposed by the skill serialize to this shape; a future API/MCP bridge consumes it to create them.",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["skill", "version", "interactions"],
+  "properties": {
+    "skill": {"const": "presentation-engagement"},
+    "version": {"type": "string"},
+    "session": {
+      "type": "object",
+      "properties": {
+        "title": {"type": "string"},
+        "duration_min": {"type": "number"},
+        "setting": {"enum": ["in-person", "remote", "hybrid"]},
+        "audience_size": {"type": "number"},
+        "platform": {"enum": ["google_slides", "powerpoint", "keynote", "other", "unknown"]}
+      }
+    },
+    "interactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "anchor", "technique", "job", "title"],
+        "properties": {
+          "id": {"type": "string"},
+          "anchor": {
+            "type": "object",
+            "description": "Where the interaction attaches. Prefer slide numbers; minute offsets for tool-free decks.",
+            "properties": {
+              "slide_after": {"type": "number"},
+              "minute_offset": {"type": "number"}
+            }
+          },
+          "technique": {"enum": ["poll", "word_cloud", "quiz", "prediction_reveal", "qa_collect", "discussion_prompt", "scale_check", "show_of_hands", "chat_reply"]},
+          "job": {"enum": ["activate", "reorient", "evidence", "retain"]},
+          "title": {"type": "string"},
+          "question": {"type": "string"},
+          "options": {"type": "array", "items": {"type": "string"}},
+          "answer_key": {"type": "array", "items": {"type": "number"}, "description": "For quiz items: indices into options that are correct"},
+          "anonymity": {"enum": ["public", "anonymous"]},
+          "estimated_duration_s": {"type": "number"},
+          "then_what": {"type": "string", "description": "How the presenter uses the result. Absent = engagement theater."}
+        }
+      }
+    },
+    "cut_recommendations": {"type": "array", "items": {"type": "string"}}
+  }
+}

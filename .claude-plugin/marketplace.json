@@ -1,0 +1,12 @@
+{
+  "name": "presentation-skills",
+  "owner": {"name": "Sam Bessey"},
+  "metadata": {"description": "Portable agent skills for presentation design and audience interaction", "version": "1.0.0"},
+  "plugins": [
+    {
+      "name": "presentation-engagement",
+      "source": ".",
+      "description": "Identify where audience interaction improves a presentation, with technique selection, timing rules, and failure-mode checks"
+    }
+  ]
+}
